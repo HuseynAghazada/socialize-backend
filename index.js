@@ -23,7 +23,10 @@ const app = express();
 // middlewares
 
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+    origin: process.env.BASE_URL,
+    credentials: true,
+}));
 app.use(express.json({ limit: '50mb' }));
 
 app.use('/api/auth', authRoute);
